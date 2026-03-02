@@ -64,7 +64,7 @@ export function InvestmentModelGrid() {
             return (
               <Card
                 key={model.name}
-                className="bg-gradient-to-br from-slate-900/70 via-slate-900/40 to-slate-900/10"
+                className="bg-gradient-to-br from-foreground/[0.04] via-muted/80 to-background"
               >
                 <CardHeader className="flex items-start justify-between gap-4">
                   <div>

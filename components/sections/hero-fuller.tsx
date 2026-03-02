@@ -36,7 +36,7 @@ export function HeroFuller() {
       as="section"
       className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-background/90 to-background/60"
     >
-      <div className="pointer-events-none absolute inset-x-0 -top-40 h-80 bg-[radial-gradient(circle_at_top,_rgba(180,83,9,0.28),_transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-x-0 -top-40 h-80 bg-[radial-gradient(circle_at_top,_rgba(180,83,9,0.18),_transparent_60%)]" />
       <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-24 pt-20 sm:px-6 lg:px-8 lg:flex-row lg:items-end">
         <div className="relative z-10 flex-1 space-y-8">
           <p className="text-xs font-medium tracking-[0.32em] uppercase text-foreground/60">
@@ -103,7 +103,7 @@ export function HeroFuller() {
               className="pointer-events-none absolute -inset-12 rounded-[3rem] border border-primary/20 bg-gradient-to-br from-primary/10 via-background/40 to-background/90 opacity-60"
               style={{ mixBlendMode: "screen" }}
             />
-            <div className="relative rounded-[2.4rem] border border-border/80 bg-background/70 p-6 backdrop-blur-2xl shadow-[0_40px_120px_rgba(15,23,42,0.75)]">
+            <div className="relative rounded-[2.4rem] border border-border/80 bg-background/70 p-6 backdrop-blur-2xl shadow-[0_40px_120px_rgba(15,23,42,0.12)]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={mode}
@@ -125,7 +125,7 @@ export function HeroFuller() {
                     className={`mt-3 max-w-md font-serif text-xl leading-relaxed ${
                       mode === "old"
                         ? "text-foreground/60"
-                        : "text-primary-foreground"
+                        : "text-foreground"
                     }`}
                   >
                     {active.title}

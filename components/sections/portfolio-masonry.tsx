@@ -62,7 +62,7 @@ export function PortfolioMasonry() {
           {PORTFOLIO.map((company, index) => (
             <article
               key={company.name}
-              className="mb-5 break-inside-avoid rounded-3xl border border-border/80 bg-gradient-to-b from-slate-900/70 via-slate-900/40 to-slate-900/10 px-5 py-5 shadow-[0_24px_80px_rgba(15,23,42,0.85)] transition-transform duration-500 hover:-translate-y-1.5"
+              className="mb-5 break-inside-avoid rounded-3xl border border-border/80 bg-gradient-to-b from-foreground/[0.04] via-muted/90 to-background px-5 py-5 shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition-transform duration-500 hover:-translate-y-1.5"
             >
               <p className="text-[11px] uppercase tracking-[0.22em] text-foreground/55">
                 Portfolio {String(index + 1).padStart(2, "0")}

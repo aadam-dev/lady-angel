@@ -1,22 +1,34 @@
 "use client";
 
-import { useEffect } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 function useAnimatedNumber(target: number) {
-  const value = useMotionValue(0);
-  const rounded = useTransform(value, (latest) => Math.round(latest));
+  const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    const controls = value.animate(target, {
-      duration: 1.8,
-      ease: [0.16, 1, 0.3, 1],
-    });
-    return () => controls.stop();
-  }, [target, value]);
+    let frame: number;
+    const start = performance.now();
+    const duration = 1800;
+    const initial = 0;
 
-  return rounded;
+    const animate = (now: number) => {
+      const elapsed = now - start;
+      const t = Math.min(1, elapsed / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const current = initial + (target - initial) * eased;
+      setDisplay(Math.round(current));
+      if (t < 1) {
+        frame = requestAnimationFrame(animate);
+      }
+    };
+
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [target]);
+
+  return display;
 }
 
 export function ImpactDashboard() {
@@ -73,7 +85,7 @@ export function ImpactDashboard() {
 
 interface ImpactTileProps {
   label: string;
-  value: any;
+  value: number;
   suffix?: string;
   note: string;
 }

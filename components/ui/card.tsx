@@ -7,7 +7,7 @@ export function Card({ className, ...props }: CardProps) {
   return (
     <div
       className={twMerge(
-        "relative overflow-hidden rounded-3xl border border-border/80 bg-background/40 px-8 py-6 backdrop-blur-xl shadow-[0_0_0_1px_rgba(15,23,42,0.6)]",
+        "relative overflow-hidden rounded-3xl border border-border/80 bg-background/80 px-8 py-6 backdrop-blur-xl shadow-[0_0_0_1px_var(--border),0_4px_24px_rgba(15,23,42,0.08)]",
         className,
       )}
       {...props}
