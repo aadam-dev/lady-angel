@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { Button } from "@/components/ui/button";
@@ -9,11 +10,11 @@ type Mode = "old" | "lan";
 
 const copyByMode: Record<Mode, { title: string; bullets: string[] }> = {
   old: {
-    title: "Old reality of angel investing",
+    title: "The Legacy Constraints",
     bullets: [
-      "Networks built on gatekeeping, not inclusion.",
-      "Opaque deal terms and misaligned incentives.",
-      "Women-led founders systematically underfunded.",
+      "Fragmented networks based on gatekeeping.",
+      "Opaque terms and misaligned incentives.",
+      "systemic underfunding of women-led ventures.",
     ],
   },
   lan: {
@@ -28,147 +29,131 @@ const copyByMode: Record<Mode, { title: string; bullets: string[] }> = {
 
 export function HeroFuller() {
   const [mode, setMode] = useState<Mode>("lan");
-
   const active = copyByMode[mode];
 
   return (
     <ScrollReveal
       as="section"
-      className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-background/90 to-background/60"
+      className="relative min-h-[90vh] overflow-hidden bg-background pt-32 pb-24"
     >
-      <div className="pointer-events-none absolute inset-x-0 -top-40 h-80 bg-[radial-gradient(circle_at_top,_rgba(180,83,9,0.18),_transparent_60%)]" />
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-24 pt-20 sm:px-6 lg:px-8 lg:flex-row lg:items-end">
-        <div className="relative z-10 flex-1 space-y-8">
-          <p className="text-xs font-medium tracking-[0.32em] uppercase text-foreground/60">
-            Build a new model
-          </p>
-          <h1 className="max-w-3xl font-serif text-4xl leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Making the{" "}
-            <span className="text-primary">existing model obsolete</span>{" "}
-            for women-led capital.
-          </h1>
-          <p className="max-w-xl text-sm text-foreground/70 leading-relaxed">
-            Lady Angel Network is a private architecture for women deploying
-            personal capital into women-led ventures—combining institutional
-            discipline with deeply human deal flow.
-          </p>
+      {/* Background Accents */}
+      <div className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[600px] w-full -translate-x-1/2 bg-[radial-gradient(circle_at_top,_rgba(249,115,22,0.08),_transparent_70%)]" />
 
-          <div className="flex flex-wrap items-center gap-4">
-            <Button
-              variant="outline"
-              size="lg"
-              className="tracking-[0.26em] uppercase"
-            >
-              Apply for Membership
-            </Button>
-            <span className="text-[11px] uppercase tracking-[0.22em] text-foreground/55">
-              Invitation only · Globally distributed members
-            </span>
-          </div>
-        </div>
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          {/* Content Side */}
+          <div className="space-y-10">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-[10px] font-bold tracking-[0.2em] uppercase text-primary">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+              </span>
+              Architecting the Future
+            </div>
 
-        <div className="relative z-10 flex-1">
-          <div className="mb-4 flex items-center justify-between gap-4">
-            <p className="text-[11px] uppercase tracking-[0.26em] text-foreground/60">
-              The New Model
-            </p>
-            <div className="inline-flex items-center gap-1 rounded-full border border-border/80 bg-muted/60 p-1 text-[11px] tracking-[0.2em] uppercase text-foreground/70">
-              <button
-                type="button"
-                onClick={() => setMode("old")}
-                className={`rounded-full px-3 py-1 transition-colors ${
-                  mode === "old"
-                    ? "bg-foreground/10 text-foreground"
-                    : "text-foreground/60"
-                }`}
+            <div className="space-y-6">
+              <blockquote className="border-l-2 border-primary/60 pl-5">
+                <p className="font-serif text-lg leading-relaxed text-foreground/90 sm:text-xl">
+                  You never change things by fighting the existing reality. To
+                  change something, build a new model that makes the existing
+                  model obsolete.
+                </p>
+                <cite className="mt-2 block text-[10px] font-medium tracking-[0.2em] uppercase not-italic text-foreground/50">
+                  — R. Buckminster Fuller
+                </cite>
+              </blockquote>
+              <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-foreground sm:text-6xl xl:text-7xl">
+                Making the <br />
+                <span className="text-primary italic">Existing Model</span> <br />
+                Obsolete for women-led capital.
+              </h1>
+              <p className="max-w-xl text-lg leading-relaxed text-foreground/60">
+                Lady Angel Network is a private architecture for women deploying
+                personal capital into women-led ventures—combining institutional
+                discipline with deeply human deal flow.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-6">
+              <Button
+                size="lg"
+                className="rounded-full px-10 py-7 text-xs font-bold tracking-[0.2em] uppercase shadow-xl shadow-primary/20 transition-all hover:-translate-y-1 active:scale-95"
               >
-                Old Reality
-              </button>
-              <button
-                type="button"
-                onClick={() => setMode("lan")}
-                className={`rounded-full px-3 py-1 transition-colors ${
-                  mode === "lan"
-                    ? "bg-primary text-primary-foreground"
-                    : "text-foreground/60"
-                }`}
-              >
-                LAN Model
-              </button>
+                Apply for Membership
+              </Button>
+              <div className="flex -space-x-3 overflow-hidden">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="inline-block h-10 w-10 rounded-full border-2 border-background bg-muted" />
+                ))}
+              </div>
+              <p className="text-[11px] font-medium tracking-wide text-foreground/40 italic">
+                Join 120+ aligned investors
+              </p>
             </div>
           </div>
 
+          {/* Visual Side */}
           <div className="relative">
-            <motion.div
-              className="pointer-events-none absolute -inset-12 rounded-[3rem] border border-primary/20 bg-gradient-to-br from-primary/10 via-background/40 to-background/90 opacity-60"
-              style={{ mixBlendMode: "screen" }}
-            />
-            <div className="relative rounded-[2.4rem] border border-border/80 bg-background/70 p-6 backdrop-blur-2xl shadow-[0_40px_120px_rgba(15,23,42,0.12)]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={mode}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.45, ease: [0.2, 0.8, 0.2, 1] }}
-                >
-                  <p
-                    className={`text-xs font-semibold uppercase tracking-[0.26em] ${
-                      mode === "old"
-                        ? "text-foreground/40"
-                        : "text-primary/80"
-                    }`}
-                  >
-                    {mode === "old" ? "Legacy Constraints" : "Architected Flow"}
-                  </p>
-                  <h2
-                    className={`mt-3 max-w-md font-serif text-xl leading-relaxed ${
-                      mode === "old"
-                        ? "text-foreground/60"
-                        : "text-foreground"
-                    }`}
-                  >
-                    {active.title}
-                  </h2>
-                  <ul className="mt-4 space-y-2.5 text-sm leading-relaxed">
-                    {active.bullets.map((item) => (
-                      <li
-                        key={item}
-                        className={`flex gap-3 ${
-                          mode === "old"
-                            ? "text-foreground/50"
-                            : "text-foreground/80"
-                        }`}
-                      >
-                        <span
-                          className={`mt-1 h-1.5 w-1.5 rounded-full ${
-                            mode === "old"
-                              ? "bg-foreground/30"
-                              : "bg-primary/90"
-                          }`}
-                        />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              </AnimatePresence>
+            <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-border/40 shadow-2xl">
+              <Image
+                src="/hero-business.png"
+                alt="Women in business collaborating"
+                fill
+                className="object-cover"
+                priority
+              />
 
-              <div className="mt-6 grid grid-cols-2 gap-4 text-[11px] uppercase tracking-[0.2em] text-foreground/55">
-                <div className="space-y-1">
-                  <p>Members</p>
-                  <p className="text-lg font-semibold tracking-[0.12em] text-primary">
-                    120+
-                  </p>
+              {/* Floating Glass Card */}
+              <div className="absolute bottom-8 left-8 right-8 glass rounded-3xl p-6 shadow-2xl">
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary">
+                    Platform Evolution
+                  </span>
+                  <div className="flex gap-1 rounded-full bg-foreground/5 p-1">
+                    <button
+                      onClick={() => setMode("old")}
+                      className={`rounded-full px-3 py-1 text-[9px] font-bold tracking-wider uppercase transition-colors ${mode === "old" ? "bg-foreground text-background" : "text-foreground/40"
+                        }`}
+                    >
+                      Legacy
+                    </button>
+                    <button
+                      onClick={() => setMode("lan")}
+                      className={`rounded-full px-3 py-1 text-[9px] font-bold tracking-wider uppercase transition-colors ${mode === "lan" ? "bg-primary text-white" : "text-foreground/40"
+                        }`}
+                    >
+                      LAN
+                    </button>
+                  </div>
                 </div>
-                <div className="space-y-1">
-                  <p>Markets</p>
-                  <p className="text-lg font-semibold tracking-[0.12em] text-foreground/80">
-                    14
-                  </p>
-                </div>
+
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={mode}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <h3 className="mb-4 font-serif text-xl text-foreground">
+                      {active.title}
+                    </h3>
+                    <ul className="space-y-3">
+                      {active.bullets.map((bullet, i) => (
+                        <li key={i} className="flex items-start gap-3 text-sm text-foreground/70">
+                          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
+
+            {/* Decorative elements */}
+            <div className="absolute -right-12 -top-12 -z-10 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+            <div className="absolute -bottom-12 -left-12 -z-10 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
           </div>
         </div>
       </div>

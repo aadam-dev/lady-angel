@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 
 interface ScrollRevealProps {
   children: React.ReactNode;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   delay?: number;
   className?: string;
 }

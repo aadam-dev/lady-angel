@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
@@ -12,21 +13,21 @@ const config: Record<
 > = {
   nurture: {
     label: "Nurture",
-    heading: "Designing founders for institutional readiness.",
+    heading: "Institutional readiness.",
     body: "Structured bootcamps, specialist mentors, and deep-dive clinics that de-risk execution before capital is deployed.",
-    stats: ["Bootcamp cohorts: 6+", "Mentorship hours: 1,200+", "Expert domains: Product, GTM, Governance"],
+    stats: ["6+ Cohorts", "1,200+ Mentorship Hours", "Expert GTM/Product Support"],
   },
   connect: {
     label: "Connect",
-    heading: "An invitation-only network, not a mailing list.",
+    heading: "A Curated Network.",
     body: "Curated introductions across angels, operators, and fund managers who share a thesis on women-led value creation.",
-    stats: ["Acceptance rate: < 20%", "Global chapters: 4", "Strategic intros per deal: 3–5"],
+    stats: ["< 20% Acceptance", "4 Global Chapters", "Strategic Deal Flow"],
   },
   invest: {
     label: "Invest",
-    heading: "Institutional-grade instruments with human context.",
+    heading: "Grade Instruments.",
     body: "From convertible notes to preference shares, each instrument is framed with clear scenarios, protections, and upside.",
-    stats: ["Instruments: Convertible Debt, Preference Shares", "Ticket sizes: 10k – 250k+", "Syndicated rounds: Seed to Series B"],
+    stats: ["Seed to Series B", "10k – 250k+ Tickets", "Transparent Terms"],
   },
 };
 
@@ -37,63 +38,80 @@ export function NurtureConnectInvest() {
   return (
     <ScrollReveal
       as="section"
-      className="border-b border-border/60 bg-background/90"
+      className="bg-background py-24 border-b border-border/40"
     >
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-start">
-          <div className="flex-1 space-y-4">
-            <p className="text-xs font-medium uppercase tracking-[0.32em] text-foreground/60">
-              Nurture · Connect · Invest
-            </p>
-            <h2 className="max-w-xl font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
-              The operating system behind every LAN investment.
-            </h2>
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        <div className="mb-16 space-y-4">
+          <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-primary">
+            Nurture · Connect · Invest
+          </p>
+          <h2 className="max-w-3xl font-serif text-4xl leading-tight text-foreground sm:text-5xl">
+            The operating system behind <br />
+            every <span className="text-primary italic">LAN investment</span>.
+          </h2>
+        </div>
+
+        <div className="grid gap-12 lg:grid-cols-5 lg:items-center">
+          {/* Image Side */}
+          <div className="lg:col-span-3">
+            <div className="relative aspect-video overflow-hidden rounded-[2rem] border border-border/40 shadow-xl lg:aspect-[16/10]">
+              <Image
+                src="/networking.png"
+                alt="Business networking events"
+                fill
+                className="object-cover transition-transform duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+            </div>
           </div>
 
-          <div className="flex flex-1 flex-col gap-6">
-            <div className="inline-flex self-start rounded-full border border-border/80 bg-muted/60 p-1 text-[11px] uppercase tracking-[0.22em] text-foreground/70">
+          {/* Content Side */}
+          <div className="space-y-8 lg:col-span-2">
+            <div className="inline-flex rounded-full bg-muted/50 p-1.5 glass">
               {(["nurture", "connect", "invest"] as Pill[]).map((pill) => (
                 <button
                   key={pill}
-                  type="button"
                   onClick={() => setActive(pill)}
-                  className={`rounded-full px-4 py-1.5 transition-colors ${
-                    active === pill
-                      ? "bg-primary text-primary-foreground"
-                      : "text-foreground/60 hover:text-foreground"
-                  }`}
+                  className={`rounded-full px-6 py-2 text-[10px] font-bold tracking-[0.15em] uppercase transition-all ${active === pill
+                      ? "bg-primary text-white shadow-lg shadow-primary/20"
+                      : "text-foreground/40 hover:text-foreground/60"
+                    }`}
                 >
                   {config[pill].label}
                 </button>
               ))}
             </div>
 
-            <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-muted/70 p-6 backdrop-blur-xl">
+            <div className="relative min-h-[300px] glass rounded-[2rem] p-8 shadow-xl">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.4 }}
                 >
-                  <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-primary/80">
-                    {config[active].label}
+                  <p className="mb-2 text-[10px] font-bold tracking-[0.2em] uppercase text-primary">
+                    {config[active].label} Strategy
                   </p>
-                  <h3 className="mb-3 font-serif text-lg leading-snug text-foreground">
+                  <h3 className="mb-4 font-serif text-3xl text-foreground">
                     {activeConfig.heading}
                   </h3>
-                  <p className="mb-4 text-sm leading-relaxed text-foreground/70">
+                  <p className="mb-8 text-base leading-relaxed text-foreground/60">
                     {activeConfig.body}
                   </p>
-                  <dl className="grid gap-3 text-[11px] uppercase tracking-[0.18em] text-foreground/60 sm:grid-cols-3">
-                    {activeConfig.stats.map((stat) => (
-                      <div key={stat} className="space-y-1">
-                        <dt className="sr-only">Stat</dt>
-                        <dd>{stat}</dd>
+                  <div className="grid gap-4 sm:grid-cols-3">
+                    {activeConfig.stats.map((stat, i) => (
+                      <div key={i} className="space-y-1">
+                        <p className="text-[10px] font-bold tracking-wider text-foreground/30 uppercase">
+                          Metric {i + 1}
+                        </p>
+                        <p className="text-sm font-semibold text-foreground/80">
+                          {stat}
+                        </p>
                       </div>
                     ))}
-                  </dl>
+                  </div>
                 </motion.div>
               </AnimatePresence>
             </div>

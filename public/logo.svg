@@ -1,0 +1,20 @@
+<svg width="600" height="200" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- LAN Icon - Slanted and Interlocked -->
+  <g transform="translate(20, 20) scale(1.4)">
+    <!-- Main Orange Shape -->
+    <path d="M0 60L60 0H90L30 60H0Z" fill="#F97316"/>
+    <path d="M40 80L100 20H130L70 80H40Z" fill="#F97316"/>
+    <path d="M80 100L140 40H170L110 100H80Z" fill="#F97316"/>
+    
+    <!-- Connector bits -->
+    <path d="M45 30H75V45H45V30Z" fill="#F97316" transform="rotate(-40 60 37)"/>
+    <path d="M85 50H115V65H85V50Z" fill="#F97316" transform="rotate(-40 100 57)"/>
+  </g>
+  
+  <!-- Text Block -->
+  <g transform="translate(260, 60)">
+    <text font-family="Inter, sans-serif" font-size="48" font-weight="600" fill="#4B5563">Lady</text>
+    <text y="50" font-family="Inter, sans-serif" font-size="48" font-weight="400" fill="#9CA3AF">Angel</text>
+    <text y="100" font-family="Inter, sans-serif" font-size="48" font-weight="400" fill="#9CA3AF">Network</text>
+  </g>
+</svg>

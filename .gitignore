@@ -42,3 +42,7 @@ next-env.d.ts
 
 # local documentation
 docs/
+
+# ignore all markdown except README
+*.md
+!README.md

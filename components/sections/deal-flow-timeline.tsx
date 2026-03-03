@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 const STEPS = [
@@ -41,6 +44,8 @@ const STEPS = [
 ];
 
 export function DealFlowTimeline() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
   return (
     <ScrollReveal
       as="section"
@@ -68,6 +73,7 @@ export function DealFlowTimeline() {
           <div className="space-y-8">
             {STEPS.map((step, index) => {
               const leftAligned = index % 2 === 0;
+              const isExpanded = expandedIndex === index;
               return (
                 <div
                   key={step.name}
@@ -86,22 +92,60 @@ export function DealFlowTimeline() {
                     </div>
                   </div>
                   <div
-                    className={`flex-1 rounded-3xl border border-border/80 bg-muted/70 p-5 backdrop-blur-xl ${
+                    className={`flex-1 rounded-3xl border border-border/80 bg-muted/70 backdrop-blur-xl ${
                       leftAligned ? "" : "md:order-1"
-                    }`}
+                    } ${isExpanded ? "ring-2 ring-primary/30" : ""}`}
                   >
-                    <p className="text-[11px] uppercase tracking-[0.22em] text-foreground/60">
-                      {step.phase}
-                    </p>
-                    <h3 className="mt-1 font-serif text-lg leading-snug text-foreground">
-                      {step.name}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-foreground/75">
-                      {step.summary}
-                    </p>
-                    <p className="mt-3 text-xs leading-relaxed text-foreground/60">
-                      {step.support}
-                    </p>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setExpandedIndex(isExpanded ? null : index)
+                      }
+                      className="w-full p-5 text-left"
+                      aria-expanded={isExpanded}
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <p className="text-[11px] uppercase tracking-[0.22em] text-foreground/60">
+                            {step.phase}
+                          </p>
+                          <h3 className="mt-1 font-serif text-lg leading-snug text-foreground">
+                            {step.name}
+                          </h3>
+                          <p className="mt-2 text-sm leading-relaxed text-foreground/75">
+                            {step.summary}
+                          </p>
+                        </div>
+                        <span
+                          className="mt-1 shrink-0 rounded-full p-1 text-foreground/60 transition-colors hover:bg-foreground/10 hover:text-foreground"
+                          aria-hidden
+                        >
+                          {isExpanded ? (
+                            <ChevronUp size={20} />
+                          ) : (
+                            <ChevronDown size={20} />
+                          )}
+                        </span>
+                      </div>
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{
+                            duration: 0.25,
+                            ease: [0.2, 0.8, 0.2, 1],
+                          }}
+                          className="overflow-hidden"
+                        >
+                          <p className="border-t border-border/60 px-5 pb-5 pt-3 text-xs leading-relaxed text-foreground/60">
+                            {step.support}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
               );
