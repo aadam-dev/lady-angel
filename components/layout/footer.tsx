@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { Logo } from "./logo";
 
 export function Footer() {
   return (
@@ -8,14 +8,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-4 lg:items-start">
           <div className="lg:col-span-2 space-y-8">
             <Link href="/" className="inline-block transition-opacity hover:opacity-80">
-              <div className="relative h-10 w-44">
-                <Image
-                  src="/logo.svg"
-                  alt="Lady Angel Network"
-                  fill
-                  className="object-contain object-left"
-                />
-              </div>
+              <Logo className="h-8 w-auto min-w-[140px]" />
             </Link>
             <p className="max-w-md text-base leading-relaxed text-foreground/50">
               A private member network aligning capital, mentorship, and

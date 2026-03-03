@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { Logo } from "./logo";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -48,15 +48,7 @@ export function MainNav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12">
         <Link href="/" className="flex items-center transition-opacity hover:opacity-80">
-          <div className="relative h-10 w-44">
-            <Image
-              src="/logo.svg"
-              alt="Lady Angel Network"
-              fill
-              className="object-contain object-left"
-              priority
-            />
-          </div>
+          <Logo className="h-8 w-auto min-w-[140px]" />
         </Link>
 
         {/* Desktop Navigation */}
