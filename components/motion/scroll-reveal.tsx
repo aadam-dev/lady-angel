@@ -3,9 +3,11 @@
 import { motion, useAnimation, type Variants } from "framer-motion";
 import { useEffect, useRef } from "react";
 
+type ScrollRevealAs = "section" | "div" | "article" | "main" | "aside" | "header" | "footer";
+
 interface ScrollRevealProps {
   children: React.ReactNode;
-  as?: keyof React.JSX.IntrinsicElements;
+  as?: ScrollRevealAs;
   delay?: number;
   className?: string;
 }
