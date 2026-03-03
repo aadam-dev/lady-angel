@@ -47,13 +47,13 @@ export function MainNav() {
         }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12">
-        <Link href="/" className="flex items-center gap-3 transition-transform hover:scale-[1.02]">
-          <div className="relative h-16 w-56">
+        <Link href="/" className="flex items-center transition-opacity hover:opacity-80">
+          <div className="relative h-10 w-44">
             <Image
               src="/logo.svg"
               alt="Lady Angel Network"
               fill
-              className="object-contain"
+              className="object-contain object-left"
               priority
             />
           </div>

@@ -7,13 +7,13 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-4 lg:items-start">
           <div className="lg:col-span-2 space-y-8">
-            <Link href="/" className="inline-block transition-transform hover:scale-[1.02]">
-              <div className="relative h-16 w-56">
+            <Link href="/" className="inline-block transition-opacity hover:opacity-80">
+              <div className="relative h-10 w-44">
                 <Image
                   src="/logo.svg"
                   alt="Lady Angel Network"
                   fill
-                  className="object-contain"
+                  className="object-contain object-left"
                 />
               </div>
             </Link>
