@@ -14,12 +14,12 @@ const config: Record<
   nurture: {
     label: "Nurture",
     heading: "Institutional readiness.",
-    body: "Structured bootcamps, specialist mentors, and deep-dive clinics that de-risk execution before capital is deployed.",
+    body: "Members are encouraged to invest personal funds in supporting young entrepreneurial women, in addition to mentoring and coaching.",
   },
   connect: {
     label: "Connect",
     heading: "A Curated Network.",
-    body: "Curated introductions across angels, operators, and fund managers who share a thesis on women-led value creation.",
+    body: "Curated connections among investors and entrepreneurs, including mentoring and introductions where founders need support.",
   },
   invest: {
     label: "Invest",

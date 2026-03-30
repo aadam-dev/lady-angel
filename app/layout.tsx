@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { MainNav } from "@/components/layout/main-nav";
 import { Footer } from "@/components/layout/footer";
+import { HashScroll } from "@/components/layout/hash-scroll";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -37,6 +38,7 @@ export default function RootLayout({
         className={`${inter.variable} ${geistMono.variable} ${displaySerif.variable} font-sans bg-background text-foreground antialiased`}
       >
         <ThemeProvider>
+          <HashScroll />
           <div className="flex min-h-screen flex-col bg-background">
             <MainNav />
             <main className="flex-1">{children}</main>

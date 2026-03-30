@@ -5,7 +5,7 @@ export default function DisclaimerPage() {
         Investment Disclaimer
       </h1>
       <p className="mt-3 text-sm text-foreground/60">
-        Last updated: 2024
+        Last updated: 2026
       </p>
 
       <div className="mt-8 space-y-6 text-sm leading-relaxed text-foreground/80">
@@ -57,11 +57,17 @@ export default function DisclaimerPage() {
             4. Member Responsibility
           </h2>
           <p>
-            Each member is responsible for performing their own independent
-            due diligence and for making their own investment decisions. Where
-            appropriate, members should consult independent professional
-            advisors regarding legal, tax, regulatory, and financial
-            implications before committing capital.
+            LAN may coordinate shared or group diligence processes (for example,
+            selection committee review or pooled member input). Such processes
+            are intended to support discussion and do not replace each
+            member&apos;s obligation to conduct their own independent due
+            diligence and make their own investment decisions.
+          </p>
+          <p className="mt-2">
+            Each member remains responsible for their own independent due
+            diligence. Where appropriate, members should consult independent
+            professional advisors regarding legal, tax, regulatory, and
+            financial implications before committing capital.
           </p>
         </section>
       </div>

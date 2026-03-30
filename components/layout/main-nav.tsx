@@ -2,12 +2,11 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Logo } from "./logo";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { useTheme } from "@/components/providers/theme-provider";
 
 const sections = [
   { id: "network", label: "Network" },
@@ -19,7 +18,8 @@ const sections = [
 ];
 
 export function MainNav() {
-  const { theme } = useTheme();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
@@ -32,11 +32,18 @@ export function MainNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNavClick = (id: string) => {
+  /** On the home page, smooth-scroll in place. Else navigate to `/#id` so legal routes work. */
+  const handleSectionClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+  ) => {
     setOpen(false);
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (isHome) {
+      e.preventDefault();
+      document.getElementById(id)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }
   };
 
@@ -56,26 +63,27 @@ export function MainNav() {
         <nav className="hidden items-center gap-10 md:flex">
           <div className="flex items-center gap-8">
             {sections.map((item) => (
-              <button
+              <Link
                 key={item.id}
-                type="button"
-                onClick={() => handleNavClick(item.id)}
+                href={`/#${item.id}`}
+                onClick={(e) => handleSectionClick(e, item.id)}
                 className="group relative text-xs font-semibold tracking-[0.2em] uppercase text-foreground/70 transition-colors hover:text-primary"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-              </button>
+              </Link>
             ))}
           </div>
 
           <div className="flex items-center gap-4 pl-4 border-l border-border/40">
             <ThemeToggle />
-            <Button
-              className="rounded-full px-6 py-5 text-[10px] font-bold tracking-[0.25em] uppercase shadow-lg shadow-primary/10 transition-transform active:scale-95"
-              onClick={() => handleNavClick("investor-application")}
+            <Link
+              href="/#investor-application"
+              onClick={(e) => handleSectionClick(e, "investor-application")}
+              className="inline-flex items-center justify-center rounded-full border border-primary/70 bg-primary px-6 py-5 text-[10px] font-bold tracking-[0.25em] uppercase text-primary-foreground shadow-lg shadow-primary/10 transition-transform hover:bg-primary/90 active:scale-95"
             >
               Apply Now
-            </Button>
+            </Link>
           </div>
         </nav>
 
@@ -103,21 +111,22 @@ export function MainNav() {
           >
             <div className="flex flex-col gap-2 p-6">
               {sections.map((item) => (
-                <button
+                <Link
                   key={item.id}
-                  type="button"
-                  onClick={() => handleNavClick(item.id)}
+                  href={`/#${item.id}`}
+                  onClick={(e) => handleSectionClick(e, item.id)}
                   className="rounded-xl px-4 py-4 text-left text-xs font-semibold tracking-[0.2em] uppercase text-foreground/80 transition-colors hover:bg-muted hover:text-primary"
                 >
                   {item.label}
-                </button>
+                </Link>
               ))}
-              <Button
-                className="mt-4 w-full rounded-2xl py-6 text-xs font-bold tracking-[0.2em] uppercase"
-                onClick={() => handleNavClick("investor-application")}
+              <Link
+                href="/#investor-application"
+                onClick={(e) => handleSectionClick(e, "investor-application")}
+                className="mt-4 flex w-full items-center justify-center rounded-2xl border border-primary/70 bg-primary py-6 text-xs font-bold tracking-[0.2em] uppercase text-primary-foreground shadow-lg shadow-primary/10 transition-transform hover:bg-primary/90 active:scale-95"
               >
                 Apply for Membership
-              </Button>
+              </Link>
             </div>
           </motion.div>
         )}
