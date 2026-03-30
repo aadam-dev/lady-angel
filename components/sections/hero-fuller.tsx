@@ -97,11 +97,6 @@ export function HeroFuller() {
               >
                 Apply for Membership
               </Button>
-              <div className="flex -space-x-3 overflow-hidden">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="inline-block h-10 w-10 rounded-full border-2 border-background bg-muted" />
-                ))}
-              </div>
               <p className="text-[11px] font-medium tracking-wide text-foreground/40 italic">
                 Join 120+ aligned investors
               </p>

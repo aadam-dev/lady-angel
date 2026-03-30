@@ -174,34 +174,6 @@ export function InvestmentModelGrid() {
             ))}
           </div>
         </div>
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
-          <Card className="border-border/80 bg-muted/50">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-xs tracking-[0.2em] uppercase text-foreground/80">
-                Governance
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <p className="text-sm leading-relaxed text-foreground/70">
-                Deals pass through selection committees, valuation reviews, and
-                structured documentation before capital is deployed.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="border-border/80 bg-muted/50">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-xs tracking-[0.2em] uppercase text-foreground/80">
-                Member Commitments
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <p className="text-sm leading-relaxed text-foreground/70">
-                Each member commits to at least one investment within two years,
-                and mentors at least one founder within the network.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </ScrollReveal>
   );

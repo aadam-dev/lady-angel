@@ -77,6 +77,16 @@ export function MembershipSection() {
           </div>
         </div>
 
+        <div className="mt-10 space-y-4 rounded-[2rem] border border-border/40 bg-background/60 p-8 glass">
+          <h3 className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary">
+            Member commitments
+          </h3>
+          <p className="text-sm leading-relaxed text-foreground/75">
+            Each member commits to at least one investment within two years, and
+            mentors at least one founder within the network.
+          </p>
+        </div>
+
         {/* Investor Application Form */}
         <div id="investor-application" className="mt-16 space-y-6 scroll-mt-24">
           <div className="space-y-3">

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { Card, CardContent } from "@/components/ui/card";
 
 const STEPS = [
   {
@@ -150,6 +151,20 @@ export function DealFlowTimeline() {
               );
             })}
           </div>
+        </div>
+
+        <div className="mt-12 space-y-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-foreground/60">
+            Governance
+          </p>
+          <Card className="max-w-3xl border-border/80 bg-muted/50">
+            <CardContent className="pt-6">
+              <p className="text-sm leading-relaxed text-foreground/70">
+                Deals pass through selection committees, valuation reviews, and
+                structured documentation before capital is deployed.
+              </p>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Business Application Form */}
