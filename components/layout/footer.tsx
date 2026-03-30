@@ -22,10 +22,10 @@ export function Footer() {
             </h4>
             <div className="space-y-4">
               <a
-                href="mailto:hello@ladyangel.network"
+                href="mailto:info@ladyangelnetwork.com"
                 className="block text-sm text-foreground/60 transition-colors hover:text-primary"
               >
-                hello@ladyangel.network
+                info@ladyangelnetwork.com
               </a>
               <a
                 href="tel:0208634000"

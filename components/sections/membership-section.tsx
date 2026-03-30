@@ -101,8 +101,8 @@ export function MembershipSection() {
               </p>
               <p className="mt-2 max-w-sm text-sm text-foreground/60">
                 In the meantime, reach out to{" "}
-                <a href="mailto:hello@ladyangel.network" className="text-primary underline-offset-2 hover:underline">
-                  hello@ladyangel.network
+                <a href="mailto:info@ladyangelnetwork.com" className="text-primary underline-offset-2 hover:underline">
+                  info@ladyangelnetwork.com
                 </a>{" "}
                 to express your interest.
               </p>

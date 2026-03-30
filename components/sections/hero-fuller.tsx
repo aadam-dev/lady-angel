@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
@@ -10,7 +10,7 @@ type Mode = "old" | "lan";
 
 const copyByMode: Record<Mode, { title: string; bullets: string[] }> = {
   old: {
-    title: "The Legacy Constraints",
+    title: "The Traditional Constraints",
     bullets: [
       "Fragmented networks based on gatekeeping.",
       "Opaque terms and misaligned incentives.",
@@ -30,6 +30,18 @@ const copyByMode: Record<Mode, { title: string; bullets: string[] }> = {
 export function HeroFuller() {
   const [mode, setMode] = useState<Mode>("lan");
   const active = copyByMode[mode];
+
+  useEffect(() => {
+    const cycle: Mode[] = ["old", "lan"];
+    const timer = setInterval(() => {
+      setMode((current) => {
+        const nextIndex = (cycle.indexOf(current) + 1) % cycle.length;
+        return cycle[nextIndex];
+      });
+    }, 4500);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <ScrollReveal
@@ -119,7 +131,7 @@ export function HeroFuller() {
                       className={`rounded-full px-3 py-1 text-[9px] font-bold tracking-wider uppercase transition-colors ${mode === "old" ? "bg-foreground text-background" : "text-foreground/40"
                         }`}
                     >
-                      Legacy
+                      Traditional
                     </button>
                     <button
                       onClick={() => setMode("lan")}

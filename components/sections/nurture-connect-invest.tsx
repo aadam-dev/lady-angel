@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
@@ -31,6 +31,18 @@ const config: Record<
 export function NurtureConnectInvest() {
   const [active, setActive] = useState<Pill>("nurture");
   const activeConfig = config[active];
+
+  useEffect(() => {
+    const cycle: Pill[] = ["nurture", "connect", "invest"];
+    const timer = setInterval(() => {
+      setActive((current) => {
+        const nextIndex = (cycle.indexOf(current) + 1) % cycle.length;
+        return cycle[nextIndex];
+      });
+    }, 4500);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <ScrollReveal
