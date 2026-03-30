@@ -19,7 +19,7 @@ const PORTFOLIO = [
     name: "Helia Health",
     tag: "HealthTech · Pan-Africa",
     story:
-      "Remote-first women’s health clinics meeting patients where they already are—on mobile.",
+      "Remote-first women’s health clinics meeting patients where they already are, on mobile.",
   },
   {
     name: "CivicGrid",
@@ -52,7 +52,7 @@ export function PortfolioMasonry() {
             </h2>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-foreground/70">
-            LAN companies span sectors and geographies—but share a common
+            LAN companies span sectors and geographies, but share a common
             architecture: women designing, owning, and compounding the value
             they create.
           </p>

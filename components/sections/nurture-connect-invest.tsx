@@ -9,25 +9,22 @@ type Pill = "nurture" | "connect" | "invest";
 
 const config: Record<
   Pill,
-  { label: string; heading: string; body: string; stats: string[] }
+  { label: string; heading: string; body: string }
 > = {
   nurture: {
     label: "Nurture",
     heading: "Institutional readiness.",
     body: "Structured bootcamps, specialist mentors, and deep-dive clinics that de-risk execution before capital is deployed.",
-    stats: ["6+ Cohorts", "1,200+ Mentorship Hours", "Expert GTM/Product Support"],
   },
   connect: {
     label: "Connect",
     heading: "A Curated Network.",
     body: "Curated introductions across angels, operators, and fund managers who share a thesis on women-led value creation.",
-    stats: ["< 20% Acceptance", "4 Global Chapters", "Strategic Deal Flow"],
   },
   invest: {
     label: "Invest",
     heading: "Grade Instruments.",
     body: "From convertible notes to preference shares, each instrument is framed with clear scenarios, protections, and upside.",
-    stats: ["Seed to Series B", "10k – 250k+ Tickets", "Transparent Terms"],
   },
 };
 
@@ -82,7 +79,7 @@ export function NurtureConnectInvest() {
               ))}
             </div>
 
-            <div className="relative min-h-[300px] glass rounded-[2rem] p-8 shadow-xl">
+            <div className="relative glass rounded-[2rem] p-8 shadow-xl">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}
@@ -97,21 +94,9 @@ export function NurtureConnectInvest() {
                   <h3 className="mb-4 font-serif text-3xl text-foreground">
                     {activeConfig.heading}
                   </h3>
-                  <p className="mb-8 text-base leading-relaxed text-foreground/60">
+                  <p className="text-base leading-relaxed text-foreground/60">
                     {activeConfig.body}
                   </p>
-                  <div className="grid gap-4 sm:grid-cols-3">
-                    {activeConfig.stats.map((stat, i) => (
-                      <div key={i} className="space-y-1">
-                        <p className="text-[10px] font-bold tracking-wider text-foreground/30 uppercase">
-                          Metric {i + 1}
-                        </p>
-                        <p className="text-sm font-semibold text-foreground/80">
-                          {stat}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
                 </motion.div>
               </AnimatePresence>
             </div>

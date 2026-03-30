@@ -46,7 +46,7 @@ const INSTRUMENTS = [
   {
     name: "Convertible",
     description:
-      "Convertible notes or SAFEs with clear conversion triggers, caps, and discount—aligned with standard market terms where possible.",
+      "Convertible notes or SAFEs with clear conversion triggers, caps, and discount, aligned with standard market terms where possible.",
   },
   {
     name: "Preference shares",
@@ -174,25 +174,33 @@ export function InvestmentModelGrid() {
             ))}
           </div>
         </div>
-        <div className="mt-10 grid gap-4 text-xs text-foreground/60 md:grid-cols-2">
-          <div>
-            <p className="font-semibold tracking-[0.22em] uppercase">
-              Governance
-            </p>
-            <p className="mt-2 leading-relaxed">
-              Deals pass through selection committees, valuation reviews, and
-              structured documentation before capital is deployed.
-            </p>
-          </div>
-          <div>
-            <p className="font-semibold tracking-[0.22em] uppercase">
-              Member Commitments
-            </p>
-            <p className="mt-2 leading-relaxed">
-              Each member commits to at least one investment within two years,
-              and mentors at least one founder within the network.
-            </p>
-          </div>
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          <Card className="border-border/80 bg-muted/50">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-xs tracking-[0.2em] uppercase text-foreground/80">
+                Governance
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="text-sm leading-relaxed text-foreground/70">
+                Deals pass through selection committees, valuation reviews, and
+                structured documentation before capital is deployed.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="border-border/80 bg-muted/50">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-xs tracking-[0.2em] uppercase text-foreground/80">
+                Member Commitments
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="text-sm leading-relaxed text-foreground/70">
+                Each member commits to at least one investment within two years,
+                and mentors at least one founder within the network.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </ScrollReveal>

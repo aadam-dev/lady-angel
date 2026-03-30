@@ -14,6 +14,7 @@ const sections = [
   { id: "about", label: "About" },
   { id: "membership", label: "Membership" },
   { id: "investment-models", label: "Investments" },
+  { id: "deal-selection", label: "For Businesses" },
   { id: "impact", label: "Impact" },
 ];
 
@@ -71,6 +72,7 @@ export function MainNav() {
             <ThemeToggle />
             <Button
               className="rounded-full px-6 py-5 text-[10px] font-bold tracking-[0.25em] uppercase shadow-lg shadow-primary/10 transition-transform active:scale-95"
+              onClick={() => handleNavClick("investor-application")}
             >
               Apply Now
             </Button>
@@ -110,7 +112,10 @@ export function MainNav() {
                   {item.label}
                 </button>
               ))}
-              <Button className="mt-4 w-full rounded-2xl py-6 text-xs font-bold tracking-[0.2em] uppercase">
+              <Button
+                className="mt-4 w-full rounded-2xl py-6 text-xs font-bold tracking-[0.2em] uppercase"
+                onClick={() => handleNavClick("investor-application")}
+              >
                 Apply for Membership
               </Button>
             </div>

@@ -39,7 +39,7 @@ const STEPS = [
     phase: "Stage 5",
     summary: "Formal pitch to the Lady Angels for capital commitments.",
     support:
-      "A structured room for Q&A, term sheet discussion, and follow-on diligence—keeping both founders and angels aligned.",
+      "A structured room for Q&A, term sheet discussion, and follow-on diligence, keeping both founders and angels aligned.",
   },
 ];
 
@@ -52,21 +52,20 @@ export function DealFlowTimeline() {
       className="border-b border-border/60 bg-background/90"
     >
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-3">
-            <p className="text-xs font-medium uppercase tracking-[0.32em] text-foreground/60">
-              Deal Flow
-            </p>
-            <h2 className="max-w-xl font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
-              A five-stage architecture from application to capital.
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-relaxed text-foreground/70">
-            Every company that reaches a pitch has passed through a disciplined
-            pipeline of vetting, coaching, and technical support—protecting both
-            founders and angels.
+        <div className="mb-6 space-y-3">
+          <p className="text-xs font-medium uppercase tracking-[0.32em] text-foreground/60">
+            Deal Selection
           </p>
+          <h2 className="max-w-xl font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
+            A five-stage architecture from application to capital.
+          </h2>
         </div>
+
+        <p className="mb-12 max-w-3xl font-serif text-xl leading-relaxed text-foreground/80 sm:text-2xl">
+          Every company that reaches a pitch has passed through a disciplined
+          pipeline of vetting, coaching, and technical support.{" "}
+          <span className="text-primary">Protecting both founders and angels.</span>
+        </p>
 
         <div className="relative">
           <div className="absolute left-[12px] top-0 h-full w-px bg-gradient-to-b from-primary/70 via-primary/40 to-transparent md:left-1/2 md:-translate-x-1/2" />
@@ -152,8 +151,33 @@ export function DealFlowTimeline() {
             })}
           </div>
         </div>
+
+        {/* Business Application Form */}
+        <div className="mt-16 space-y-6">
+          <div className="space-y-3">
+            <p className="text-xs font-medium uppercase tracking-[0.32em] text-foreground/60">
+              Apply for Investment
+            </p>
+            <h3 className="max-w-xl font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
+              Submit your business for consideration.
+            </h3>
+            <p className="max-w-md text-sm leading-relaxed text-foreground/70">
+              Women-led businesses across emerging markets can apply to enter
+              our deal selection pipeline.
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-3xl border border-border/80 bg-muted/70 p-2 backdrop-blur-xl">
+            <iframe
+              width="100%"
+              height="480"
+              src="https://forms.office.com/Pages/ResponsePage.aspx?id=PLc8utG9UkeB2VqX5zGvpKr_JNEuNNlLiSy9yr1n4M5URTlVVkFNSkFPVTY2NUhBVU1OREY4VzZLOC4u&embed=true"
+              className="w-full rounded-2xl border-none"
+              style={{ minHeight: "480px", maxHeight: "100vh" }}
+              title="Business Investment Application"
+            />
+          </div>
+        </div>
       </div>
     </ScrollReveal>
   );
 }
-

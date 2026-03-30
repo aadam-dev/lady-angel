@@ -24,7 +24,7 @@ export default function Home() {
       <section id="investment-models">
         <InvestmentModelGrid />
       </section>
-      <section id="deal-flow">
+      <section id="deal-selection">
         <DealFlowTimeline />
       </section>
       <section id="impact">

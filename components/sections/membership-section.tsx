@@ -1,11 +1,10 @@
 "use client";
 
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
-import { Button } from "@/components/ui/button";
 
 const INVITATION_CRITERIA = [
   "Track record or clear intent to deploy personal capital into early-stage ventures.",
-  "Alignment with LAN’s thesis: women-led businesses across emerging and established markets.",
+  "Alignment with LAN's thesis: women-led businesses across emerging markets.",
   "Willingness to participate in governance, diligence, or mentorship within the network.",
   "Referral or introduction from an existing member or approved partner.",
 ];
@@ -13,13 +12,18 @@ const INVITATION_CRITERIA = [
 const MEMBER_BENEFITS = [
   "Access to vetted, women-led deal flow from application through to pitch.",
   "Structured investment models (monthly, quarterly, semi-annual, annual, bulk) to match your cadence.",
-  "Participation in bootcamps, clinics, and mentorship—before and alongside capital.",
+  "Participation in bootcamps, clinics, and mentorship, before and alongside capital.",
   "Syndicated access to convertible debt, preference shares, and straight debt instruments.",
   "Governance and selection committee involvement, with transparent terms and documentation.",
   "Global network of aligned angels, operators, and fund managers.",
 ];
 
 export function MembershipSection() {
+  const scrollToApply = () => {
+    const el = document.getElementById("investor-application");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <ScrollReveal
       as="section"
@@ -35,9 +39,13 @@ export function MembershipSection() {
               Invitation-only. Curated for alignment and impact.
             </h2>
           </div>
-          <Button className="w-fit shrink-0" size="lg">
+          <button
+            type="button"
+            onClick={scrollToApply}
+            className="inline-flex h-11 w-fit shrink-0 items-center justify-center rounded-full bg-primary px-8 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/10 transition-transform active:scale-95 hover:-translate-y-0.5"
+          >
             Apply for Membership
-          </Button>
+          </button>
         </div>
 
         <div className="grid gap-10 lg:grid-cols-2">
@@ -66,6 +74,39 @@ export function MembershipSection() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* Investor Application Form */}
+        <div id="investor-application" className="mt-16 space-y-6 scroll-mt-24">
+          <div className="space-y-3">
+            <p className="text-xs font-medium uppercase tracking-[0.32em] text-foreground/60">
+              Investor Application
+            </p>
+            <h3 className="max-w-xl font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
+              Apply to join the Lady Angel Network.
+            </h3>
+            <p className="max-w-md text-sm leading-relaxed text-foreground/70">
+              Share your details and our membership team will review your
+              profile against our invitation criteria.
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-3xl border border-border/80 bg-muted/70 p-6 backdrop-blur-xl">
+            <div className="flex flex-col items-center justify-center py-12 text-center">
+              <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full border border-primary/30 bg-primary/10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+              </div>
+              <p className="font-serif text-lg text-foreground">
+                Investor application form coming soon.
+              </p>
+              <p className="mt-2 max-w-sm text-sm text-foreground/60">
+                In the meantime, reach out to{" "}
+                <a href="mailto:hello@ladyangel.network" className="text-primary underline-offset-2 hover:underline">
+                  hello@ladyangel.network
+                </a>{" "}
+                to express your interest.
+              </p>
+            </div>
           </div>
         </div>
       </div>

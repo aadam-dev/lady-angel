@@ -32,9 +32,9 @@ function useAnimatedNumber(target: number) {
 }
 
 export function ImpactDashboard() {
-  const investments = useAnimatedNumber(60);
-  const mentorshipHours = useAnimatedNumber(1200);
-  const businessesScaled = useAnimatedNumber(40);
+  const investments = useAnimatedNumber(30);
+  const mentorshipHours = useAnimatedNumber(500);
+  const businessesScaled = useAnimatedNumber(15);
 
   return (
     <ScrollReveal
@@ -45,22 +45,22 @@ export function ImpactDashboard() {
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="space-y-3">
             <p className="text-xs font-medium uppercase tracking-[0.32em] text-foreground/60">
-              Impact Dashboard
+              5-Year Projections
             </p>
             <h2 className="max-w-xl font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
-              Where mentorship, capital, and execution meet.
+              Where we aim to be in five years.
             </h2>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-foreground/70">
-            Since inception, Lady Angel Network has combined personal capital,
-            professional expertise, and structured deal flow to move founders
-            from idea to investable, scalable businesses.
+            Lady Angel Network&apos;s roadmap for combining personal capital,
+            professional expertise, and structured deal selection to scale
+            women-led businesses across emerging markets.
           </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
           <ImpactTile
-            label="Total Investments"
+            label="Projected Investments"
             value={investments}
             suffix="+"
             note="Direct and syndicated tickets into women-led ventures."
@@ -75,7 +75,7 @@ export function ImpactDashboard() {
             label="Businesses Scaled"
             value={businessesScaled}
             suffix="+"
-            note="Companies that progressed beyond bootcamp into growth stages."
+            note="Companies projected to progress beyond bootcamp into growth stages."
           />
         </div>
       </div>

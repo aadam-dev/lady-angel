@@ -22,7 +22,7 @@ export function AboutSection() {
               understand their own needs, risk appetite, and the ventures they
               want to back better than any external gatekeeper. We created a
               private architecture where capital, mentorship, and deal flow
-              align—so members invest on their terms, with institutional
+              align so members invest on their terms, with institutional
               discipline and human context.
             </p>
           </div>
@@ -42,7 +42,7 @@ export function AboutSection() {
               </li>
               <li className="flex gap-3">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/80" />
-                Nurture before capital—bootcamps and mentorship de-risk before
+                Nurture before capital: bootcamps and mentorship de-risk before
                 deployment.
               </li>
             </ul>

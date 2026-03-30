@@ -12,8 +12,7 @@ export function Footer() {
             </Link>
             <p className="max-w-md text-base leading-relaxed text-foreground/50">
               A private member network aligning capital, mentorship, and
-              deal-flow for women-led ventures across emerging and established
-              markets.
+              deal-flow for women-led ventures across emerging markets.
             </p>
           </div>
 

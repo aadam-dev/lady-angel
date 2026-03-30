@@ -59,7 +59,7 @@ export function HeroFuller() {
                   model obsolete.
                 </p>
                 <cite className="mt-2 block text-[10px] font-medium tracking-[0.2em] uppercase not-italic text-foreground/50">
-                  — R. Buckminster Fuller
+                  - R. Buckminster Fuller
                 </cite>
               </blockquote>
               <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-foreground sm:text-6xl xl:text-7xl">
@@ -69,7 +69,7 @@ export function HeroFuller() {
               </h1>
               <p className="max-w-xl text-lg leading-relaxed text-foreground/60">
                 Lady Angel Network is a private architecture for women deploying
-                personal capital into women-led ventures—combining institutional
+                personal capital into women-led ventures, combining institutional
                 discipline with deeply human deal flow.
               </p>
             </div>
@@ -78,6 +78,10 @@ export function HeroFuller() {
               <Button
                 size="lg"
                 className="rounded-full px-10 py-7 text-xs font-bold tracking-[0.2em] uppercase shadow-xl shadow-primary/20 transition-all hover:-translate-y-1 active:scale-95"
+                onClick={() => {
+                  const el = document.getElementById("investor-application");
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
               >
                 Apply for Membership
               </Button>
