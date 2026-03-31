@@ -10,12 +10,12 @@ const INVITATION_CRITERIA = [
 ];
 
 const MEMBER_BENEFITS = [
-  "Access to vetted, women-led deal flow from application through to pitch.",
-  "Structured investment models (monthly, quarterly, semi-annual, annual, bulk) to match your cadence.",
-  "Participation in bootcamps, clinics, and mentorship, before and alongside capital.",
-  "Syndicated access to convertible debt, preference shares, and straight debt instruments.",
-  "Governance and selection committee involvement, with transparent terms and documentation.",
-  "Global network of aligned angels, operators, and fund managers.",
+  "Opportunity to network with fellow women at senior level.",
+  "Availability of investment opportunities.",
+  "Ability to give back to society through impact investing.",
+  "Board seat opportunities.",
+  "Investment capacity development.",
+  "Build wealth.",
 ];
 
 export function MembershipSection() {

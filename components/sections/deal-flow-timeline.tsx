@@ -194,7 +194,7 @@ export function DealFlowTimeline() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full border border-primary/70 bg-primary px-8 py-3 text-xs font-bold tracking-[0.2em] uppercase text-primary-foreground shadow-lg shadow-primary/10 transition-transform hover:bg-primary/90 active:scale-95"
             >
-              Open Application Form
+              Apply for Capital
             </a>
           </div>
         </div>
