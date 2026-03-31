@@ -106,8 +106,8 @@ export function HeroFuller() {
           <div className="relative">
             <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-border/40 shadow-2xl">
               <Image
-                src="/hero-business.png"
-                alt="Women in business collaborating"
+                src="/network-platform-evolution.jpg"
+                alt="Lady Angel Network member speaking at a LAN event"
                 fill
                 className="object-cover"
                 priority

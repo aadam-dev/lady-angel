@@ -1,3 +1,14 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "Read the Lady Angel Network terms governing participation, membership obligations, and investor responsibilities.",
+  alternates: {
+    canonical: "/legal/terms",
+  },
+};
+
 export default function TermsPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">

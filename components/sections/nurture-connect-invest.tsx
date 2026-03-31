@@ -65,8 +65,8 @@ export function NurtureConnectInvest() {
           <div className="lg:col-span-3">
             <div className="relative aspect-video overflow-hidden rounded-[2rem] border border-border/40 shadow-xl lg:aspect-[16/10]">
               <Image
-                src="/networking.png"
-                alt="Business networking events"
+                src="/network-group-photo.jpg"
+                alt="Lady Angel Network members at a LAN event"
                 fill
                 className="object-cover transition-transform duration-700 hover:scale-105"
               />

@@ -1,3 +1,14 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Investment Disclaimer",
+  description:
+    "Read the investment disclaimer for Lady Angel Network, including risk, diligence, and member responsibility guidance.",
+  alternates: {
+    canonical: "/legal/disclaimer",
+  },
+};
+
 export default function DisclaimerPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">

@@ -1,3 +1,14 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "Read Lady Angel Network's privacy policy covering data collection, usage, and safeguards for members, founders, and partners.",
+  alternates: {
+    canonical: "/legal/privacy",
+  },
+};
+
 export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
