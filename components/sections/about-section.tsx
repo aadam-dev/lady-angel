@@ -33,17 +33,24 @@ export function AboutSection() {
             <ul className="space-y-4 text-sm leading-relaxed text-foreground/75">
               <li className="flex gap-3">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/80" />
-                Women are best placed to assess and fund women-led ventures.
+                Women understand their needs.
               </li>
               <li className="flex gap-3">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/80" />
-                Transparent structures and clear instruments build trust and
-                scale.
+                Women can nurture, connect, and invest in the next generation
+                of women.
               </li>
               <li className="flex gap-3">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/80" />
-                Nurture before capital: bootcamps and mentorship de-risk before
-                deployment.
+                Women can network and build themselves.
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/80" />
+                Women can create investment opportunities for themselves.
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/80" />
+                Women can invest for a greater impact.
               </li>
             </ul>
           </div>

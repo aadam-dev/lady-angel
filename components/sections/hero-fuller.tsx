@@ -91,14 +91,13 @@ export function HeroFuller() {
                 size="lg"
                 className="rounded-full px-10 py-7 text-xs font-bold tracking-[0.2em] uppercase shadow-xl shadow-primary/20 transition-all hover:-translate-y-1 active:scale-95"
                 onClick={() => {
-                  const el = document.getElementById("investor-application");
-                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  window.location.href = "/membership#investor-application";
                 }}
               >
                 Apply for Membership
               </Button>
               <p className="text-[11px] font-medium tracking-wide text-foreground/40 italic">
-                Join 120+ aligned investors
+                Join the angel investors network
               </p>
             </div>
           </div>

@@ -4,22 +4,21 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "./logo";
-import { Menu, X } from "lucide-react";
+import { Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
-const sections = [
-  { id: "network", label: "Network" },
-  { id: "about", label: "About" },
-  { id: "membership", label: "Membership" },
-  { id: "investment-models", label: "Investments" },
-  { id: "deal-selection", label: "For Businesses" },
-  { id: "impact", label: "Impact" },
+const navItems = [
+  { href: "/network", label: "Network" },
+  { href: "/about", label: "About" },
+  { href: "/membership", label: "Membership" },
+  { href: "/angel-model", label: "Angel Model" },
+  { href: "/investments", label: "Investments" },
+  { href: "/impact", label: "Impact" },
 ];
 
 export function MainNav() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
@@ -32,29 +31,42 @@ export function MainNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /** On the home page, smooth-scroll in place. Else navigate to `/#id` so legal routes work. */
-  const handleSectionClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    id: string,
-  ) => {
-    setOpen(false);
-    if (isHome) {
-      e.preventDefault();
-      document.getElementById(id)?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-500 ${scrolled
-        ? "glass border-b border-border/40 py-3 shadow-sm"
-        : "border-b border-transparent bg-transparent py-5"
+        ? "glass border-b border-border/40 shadow-sm"
+        : "border-b border-transparent bg-transparent"
         }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12">
+      <div className="border-b border-primary/30 bg-primary text-primary-foreground">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2 sm:px-8 lg:px-12">
+          <p className="hidden text-[10px] font-semibold tracking-[0.18em] uppercase text-primary-foreground/90 lg:block">
+            Welcome to Lady Angel Network
+          </p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-[10px] font-medium tracking-[0.14em] uppercase sm:text-[11px]">
+            <a
+              href="tel:+233208634000"
+              className="inline-flex items-center gap-1.5 text-primary-foreground/90 transition-colors hover:text-primary-foreground"
+            >
+              <Phone size={12} />
+              +233 20 863 4000
+            </a>
+            <a
+              href="mailto:info@ladyangelnetwork.com"
+              className="inline-flex items-center gap-1.5 text-primary-foreground/90 transition-colors hover:text-primary-foreground"
+            >
+              <Mail size={12} />
+              info@ladyangelnetwork.com
+            </a>
+            <span className="hidden items-center gap-1.5 text-primary-foreground/90 lg:inline-flex">
+              <MapPin size={12} />
+              East Legon, Accra
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 sm:px-8 sm:py-4 lg:px-12">
         <Link href="/" className="flex items-center transition-opacity hover:opacity-80">
           <Logo className="h-8 w-auto min-w-[140px]" />
         </Link>
@@ -62,28 +74,29 @@ export function MainNav() {
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-10 md:flex">
           <div className="flex items-center gap-8">
-            {sections.map((item) => (
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
               <Link
-                key={item.id}
-                href={`/#${item.id}`}
-                onClick={(e) => handleSectionClick(e, item.id)}
-                className="group relative text-xs font-semibold tracking-[0.2em] uppercase text-foreground/70 transition-colors hover:text-primary"
+                key={item.href}
+                href={item.href}
+                className={`group relative text-xs font-semibold tracking-[0.2em] uppercase transition-colors ${
+                  isActive ? "text-primary" : "text-foreground/70 hover:text-primary"
+                }`}
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+                <span
+                  className={`absolute -bottom-1 left-0 h-[1.5px] bg-primary transition-all duration-300 ${
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
               </Link>
-            ))}
+              );
+            })}
           </div>
 
-          <div className="flex items-center gap-4 pl-4 border-l border-border/40">
+          <div className="flex items-center gap-4 border-l border-border/40 pl-4">
             <ThemeToggle />
-            <Link
-              href="/#investor-application"
-              onClick={(e) => handleSectionClick(e, "investor-application")}
-              className="inline-flex items-center justify-center rounded-full border border-primary/70 bg-primary px-6 py-5 text-[10px] font-bold tracking-[0.25em] uppercase text-primary-foreground shadow-lg shadow-primary/10 transition-transform hover:bg-primary/90 active:scale-95"
-            >
-              Apply Now
-            </Link>
           </div>
         </nav>
 
@@ -110,23 +123,23 @@ export function MainNav() {
             className="border-t border-border/40 bg-background md:hidden"
           >
             <div className="flex flex-col gap-2 p-6">
-              {sections.map((item) => (
+              {navItems.map((item) => {
+                const isActive = pathname === item.href;
+                return (
                 <Link
-                  key={item.id}
-                  href={`/#${item.id}`}
-                  onClick={(e) => handleSectionClick(e, item.id)}
-                  className="rounded-xl px-4 py-4 text-left text-xs font-semibold tracking-[0.2em] uppercase text-foreground/80 transition-colors hover:bg-muted hover:text-primary"
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className={`rounded-xl px-4 py-4 text-left text-xs font-semibold tracking-[0.2em] uppercase transition-colors ${
+                    isActive
+                      ? "bg-primary/10 text-primary"
+                      : "text-foreground/80 hover:bg-muted hover:text-primary"
+                  }`}
                 >
                   {item.label}
                 </Link>
-              ))}
-              <Link
-                href="/#investor-application"
-                onClick={(e) => handleSectionClick(e, "investor-application")}
-                className="mt-4 flex w-full items-center justify-center rounded-2xl border border-primary/70 bg-primary py-6 text-xs font-bold tracking-[0.2em] uppercase text-primary-foreground shadow-lg shadow-primary/10 transition-transform hover:bg-primary/90 active:scale-95"
-              >
-                Apply for Membership
-              </Link>
+                );
+              })}
             </div>
           </motion.div>
         )}

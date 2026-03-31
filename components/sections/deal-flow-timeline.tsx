@@ -167,7 +167,7 @@ export function DealFlowTimeline() {
           </Card>
         </div>
 
-        {/* Business Application Form */}
+        {/* Business Application CTA */}
         <div className="mt-16 space-y-6">
           <div className="space-y-3">
             <p className="text-xs font-medium uppercase tracking-[0.32em] text-foreground/60">
@@ -176,20 +176,26 @@ export function DealFlowTimeline() {
             <h3 className="max-w-xl font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
               Submit your business for consideration.
             </h3>
-            <p className="max-w-md text-sm leading-relaxed text-foreground/70">
-              Women-led businesses across emerging markets can apply to enter
-              our deal selection pipeline.
+            <p className="max-w-4xl text-sm leading-relaxed text-foreground/70">
+              Lady Angels Network invests up to USD 150,000 in execution-ready,
+              pre-seed startups operating in Ghana that are legally viable, open
+              to angel partnership and standard early-stage instruments, with
+              women-led and women-impact businesses encouraged.
+            </p>
+            <p className="max-w-3xl text-sm leading-relaxed text-foreground/70">
+              If your business meets the criteria, our team will review your
+              application and get back to you within two weeks with next steps.
             </p>
           </div>
-          <div className="overflow-hidden rounded-3xl border border-border/80 bg-muted/70 p-2 backdrop-blur-xl">
-            <iframe
-              width="100%"
-              height="480"
-              src="https://forms.office.com/Pages/ResponsePage.aspx?id=PLc8utG9UkeB2VqX5zGvpKr_JNEuNNlLiSy9yr1n4M5URTlVVkFNSkFPVTY2NUhBVU1OREY4VzZLOC4u&embed=true"
-              className="w-full rounded-2xl border-none"
-              style={{ minHeight: "480px", maxHeight: "100vh" }}
-              title="Business Investment Application"
-            />
+          <div className="rounded-3xl border border-border/80 bg-muted/70 p-6 backdrop-blur-xl">
+            <a
+              href="https://forms.office.com/Pages/ResponsePage.aspx?id=PLc8utG9UkeB2VqX5zGvpKr_JNEuNNlLiSy9yr1n4M5URTlVVkFNSkFPVTY2NUhBVU1OREY4VzZLOC4u&embed=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full border border-primary/70 bg-primary px-8 py-3 text-xs font-bold tracking-[0.2em] uppercase text-primary-foreground shadow-lg shadow-primary/10 transition-transform hover:bg-primary/90 active:scale-95"
+            >
+              Open Application Form
+            </a>
           </div>
         </div>
       </div>
