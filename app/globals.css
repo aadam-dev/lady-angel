@@ -55,6 +55,29 @@ html[data-theme="classic"] {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .section-heading {
+    border-left: 2px solid var(--primary-orange);
+    padding-left: 1.25rem;
+    animation: section-heading-enter 0.55s ease-out both;
+  }
+}
+
+@keyframes section-heading-enter {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-heading {
+    animation: none;
+  }
 }
 
 body {

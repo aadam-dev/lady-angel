@@ -53,7 +53,7 @@ export function DealFlowTimeline() {
       className="border-b border-border/60 bg-background/90"
     >
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-6 space-y-3">
+        <div className="mb-6 space-y-3 section-heading">
           <p className="text-xs font-medium uppercase tracking-[0.32em] text-foreground/60">
             Deal Selection
           </p>

@@ -43,7 +43,7 @@ export function ImpactDashboard() {
     >
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-3">
+          <div className="space-y-3 section-heading">
             <p className="text-xs font-medium uppercase tracking-[0.32em] text-foreground/60">
               5-Year Projections
             </p>

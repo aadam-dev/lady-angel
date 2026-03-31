@@ -50,7 +50,7 @@ export function NurtureConnectInvest() {
       className="bg-background py-24 border-b border-border/40"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-        <div className="mb-16 space-y-4">
+        <div className="mb-16 space-y-4 section-heading">
           <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-primary">
             Connect · Nurture · Invest
           </p>

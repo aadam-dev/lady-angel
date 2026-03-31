@@ -31,7 +31,7 @@ export function MembershipSection() {
     >
       <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8 lg:px-12">
         <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-4">
+          <div className="space-y-4 section-heading">
             <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary">
               Membership
             </p>
