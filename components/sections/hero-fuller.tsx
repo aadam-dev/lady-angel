@@ -109,7 +109,9 @@ export function HeroFuller() {
                 src="/network-platform-evolution.jpg"
                 alt="Lady Angel Network member speaking at a LAN event"
                 fill
-                className="object-cover"
+                sizes="(min-width: 1280px) 38vw, (min-width: 1024px) 42vw, 100vw"
+                quality={90}
+                className="object-cover object-center"
                 priority
               />
 
