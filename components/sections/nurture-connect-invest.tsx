@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
-type Pill = "nurture" | "connect" | "invest";
+type Pill = "connect" | "nurture" | "invest";
 
 const config: Record<
   Pill,
@@ -29,11 +29,11 @@ const config: Record<
 };
 
 export function NurtureConnectInvest() {
-  const [active, setActive] = useState<Pill>("nurture");
+  const [active, setActive] = useState<Pill>("connect");
   const activeConfig = config[active];
 
   useEffect(() => {
-    const cycle: Pill[] = ["nurture", "connect", "invest"];
+    const cycle: Pill[] = ["connect", "nurture", "invest"];
     const timer = setInterval(() => {
       setActive((current) => {
         const nextIndex = (cycle.indexOf(current) + 1) % cycle.length;
@@ -52,7 +52,7 @@ export function NurtureConnectInvest() {
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="mb-16 space-y-4">
           <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-primary">
-            Nurture · Connect · Invest
+            Connect · Nurture · Invest
           </p>
           <h2 className="max-w-3xl font-serif text-4xl leading-tight text-foreground sm:text-5xl">
             The operating system behind <br />
@@ -77,7 +77,7 @@ export function NurtureConnectInvest() {
           {/* Content Side */}
           <div className="space-y-8 lg:col-span-2">
             <div className="inline-flex rounded-full bg-muted/50 p-1.5 glass">
-              {(["nurture", "connect", "invest"] as Pill[]).map((pill) => (
+              {(["connect", "nurture", "invest"] as Pill[]).map((pill) => (
                 <button
                   key={pill}
                   onClick={() => setActive(pill)}

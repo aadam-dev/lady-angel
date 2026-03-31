@@ -176,12 +176,29 @@ export function DealFlowTimeline() {
             <h3 className="max-w-xl font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
               Submit your business for consideration.
             </h3>
-            <p className="max-w-4xl text-sm leading-relaxed text-foreground/70">
-              Lady Angels Network invests up to USD 150,000 in execution-ready,
-              pre-seed startups operating in Ghana that are legally viable, open
-              to angel partnership and standard early-stage instruments, with
-              women-led and women-impact businesses encouraged.
-            </p>
+            <div className="max-w-4xl rounded-2xl border border-primary/20 bg-primary/5 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Eligibility criteria
+              </p>
+              <ul className="mt-4 space-y-2 text-sm leading-relaxed text-foreground/75">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Up to USD 150,000 for execution-ready, pre-seed startups.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Startups operating in Ghana that are legally viable.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Open to angel partnership and standard early-stage instruments.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Women-led and women-impact businesses are highly encouraged.
+                </li>
+              </ul>
+            </div>
             <p className="max-w-3xl text-sm leading-relaxed text-foreground/70">
               If your business meets the criteria, our team will review your
               application and get back to you within two weeks with next steps.
