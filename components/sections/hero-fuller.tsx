@@ -114,8 +114,10 @@ export function HeroFuller() {
     return () => clearInterval(timer);
   }, []);
 
-  const panelGlass =
-    "glass rounded-3xl p-6 shadow-2xl";
+  const panelOverlay =
+    "glass rounded-3xl p-6 shadow-2xl absolute bottom-8 left-8 right-8";
+  const panelStacked =
+    "glass border-t border-border/40 p-6";
 
   return (
     <ScrollReveal
@@ -178,20 +180,21 @@ export function HeroFuller() {
 
           {/* Visual Side */}
           <div className="relative">
-            {/* Mobile / tablet: full-bleed photo, card below. Desktop: overlay unchanged. */}
-            <div className="relative z-10 overflow-hidden rounded-[2.5rem] border border-border/40 shadow-2xl aspect-[4/5] max-lg:aspect-[3/4]">
-              <Image
-                src="/network-platform-evolution.jpg"
-                alt="Lady Angel Network member speaking at a LAN event"
-                fill
-                sizes="(min-width: 1280px) 38vw, (min-width: 1024px) 42vw, 100vw"
-                quality={90}
-                className="object-cover object-center"
-                priority
-              />
+            <div className="relative z-10 flex flex-col overflow-hidden rounded-[2.5rem] border border-border/40 shadow-2xl md:block md:aspect-[4/5]">
+              <div className="relative aspect-[3/4] w-full shrink-0 md:absolute md:inset-0 md:z-0 md:aspect-auto md:h-full md:min-h-0">
+                <Image
+                  src="/network-platform-evolution.jpg"
+                  alt="Lady Angel Network member speaking at a LAN event"
+                  fill
+                  sizes="(min-width: 1280px) 38vw, (min-width: 768px) 42vw, 100vw"
+                  quality={90}
+                  className="object-cover object-center"
+                  priority
+                />
+              </div>
 
               <div
-                className={`pointer-events-none absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent max-lg:hidden`}
+                className="pointer-events-none absolute inset-0 z-[1] hidden bg-gradient-to-t from-background/20 via-transparent to-transparent md:block"
                 aria-hidden
               />
 
@@ -199,16 +202,16 @@ export function HeroFuller() {
                 mode={mode}
                 setMode={setMode}
                 active={active}
-                className={`${panelGlass} absolute bottom-8 left-8 right-8 hidden lg:block`}
+                className={`${panelStacked} relative z-[2] md:hidden`}
+              />
+
+              <PlatformEvolutionPanel
+                mode={mode}
+                setMode={setMode}
+                active={active}
+                className={`${panelOverlay} z-[2] hidden md:block`}
               />
             </div>
-
-            <PlatformEvolutionPanel
-              mode={mode}
-              setMode={setMode}
-              active={active}
-              className={`${panelGlass} relative z-10 mt-5 lg:hidden`}
-            />
 
             {/* Decorative elements */}
             <div className="absolute -right-12 -top-12 -z-10 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
