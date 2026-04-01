@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { MainNav } from "@/components/layout/main-nav";
 import { Footer } from "@/components/layout/footer";
+import { SITE_GOOGLE_MAPS_URL } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -87,10 +88,12 @@ export default function RootLayout({
     email: "info@ladyangelnetwork.com",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Accra",
+      streetAddress: "24 Justice E N P Sowah Lane",
+      addressLocality: "East Legon",
       addressRegion: "Greater Accra",
       addressCountry: "GH",
     },
+    hasMap: SITE_GOOGLE_MAPS_URL,
     sameAs: [],
   };
 

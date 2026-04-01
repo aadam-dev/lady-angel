@@ -27,6 +27,77 @@ const copyByMode: Record<Mode, { title: string; bullets: string[] }> = {
   },
 };
 
+function PlatformEvolutionPanel({
+  mode,
+  setMode,
+  active,
+  className,
+}: {
+  mode: Mode;
+  setMode: (m: Mode) => void;
+  active: (typeof copyByMode)[Mode];
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary">
+          Platform Evolution
+        </span>
+        <div className="flex shrink-0 gap-1 rounded-full bg-foreground/5 p-1">
+          <button
+            type="button"
+            onClick={() => setMode("old")}
+            className={`rounded-full px-3 py-1 text-[9px] font-bold tracking-wider uppercase transition-colors ${
+              mode === "old"
+                ? "bg-foreground text-background"
+                : "text-foreground/40"
+            }`}
+          >
+            Traditional
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode("lan")}
+            className={`rounded-full px-3 py-1 text-[9px] font-bold tracking-wider uppercase transition-colors ${
+              mode === "lan"
+                ? "bg-primary text-white"
+                : "text-foreground/40"
+            }`}
+          >
+            LAN
+          </button>
+        </div>
+      </div>
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={mode}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+        >
+          <h3 className="mb-4 font-serif text-xl text-foreground">
+            {active.title}
+          </h3>
+          <ul className="space-y-3">
+            {active.bullets.map((bullet, i) => (
+              <li
+                key={i}
+                className="flex items-start gap-3 text-sm text-foreground/70"
+              >
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                {bullet}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export function HeroFuller() {
   const [mode, setMode] = useState<Mode>("lan");
   const active = copyByMode[mode];
@@ -42,6 +113,9 @@ export function HeroFuller() {
 
     return () => clearInterval(timer);
   }, []);
+
+  const panelGlass =
+    "glass rounded-3xl p-6 shadow-2xl";
 
   return (
     <ScrollReveal
@@ -104,7 +178,8 @@ export function HeroFuller() {
 
           {/* Visual Side */}
           <div className="relative">
-            <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-border/40 shadow-2xl">
+            {/* Mobile / tablet: full-bleed photo, card below. Desktop: overlay unchanged. */}
+            <div className="relative z-10 overflow-hidden rounded-[2.5rem] border border-border/40 shadow-2xl aspect-[4/5] max-lg:aspect-[3/4]">
               <Image
                 src="/network-platform-evolution.jpg"
                 alt="Lady Angel Network member speaking at a LAN event"
@@ -115,53 +190,25 @@ export function HeroFuller() {
                 priority
               />
 
-              {/* Floating Glass Card */}
-              <div className="absolute bottom-8 left-8 right-8 glass rounded-3xl p-6 shadow-2xl">
-                <div className="mb-4 flex items-center justify-between">
-                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary">
-                    Platform Evolution
-                  </span>
-                  <div className="flex gap-1 rounded-full bg-foreground/5 p-1">
-                    <button
-                      onClick={() => setMode("old")}
-                      className={`rounded-full px-3 py-1 text-[9px] font-bold tracking-wider uppercase transition-colors ${mode === "old" ? "bg-foreground text-background" : "text-foreground/40"
-                        }`}
-                    >
-                      Traditional
-                    </button>
-                    <button
-                      onClick={() => setMode("lan")}
-                      className={`rounded-full px-3 py-1 text-[9px] font-bold tracking-wider uppercase transition-colors ${mode === "lan" ? "bg-primary text-white" : "text-foreground/40"
-                        }`}
-                    >
-                      LAN
-                    </button>
-                  </div>
-                </div>
+              <div
+                className={`pointer-events-none absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent max-lg:hidden`}
+                aria-hidden
+              />
 
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={mode}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <h3 className="mb-4 font-serif text-xl text-foreground">
-                      {active.title}
-                    </h3>
-                    <ul className="space-y-3">
-                      {active.bullets.map((bullet, i) => (
-                        <li key={i} className="flex items-start gap-3 text-sm text-foreground/70">
-                          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+              <PlatformEvolutionPanel
+                mode={mode}
+                setMode={setMode}
+                active={active}
+                className={`${panelGlass} absolute bottom-8 left-8 right-8 hidden lg:block`}
+              />
             </div>
+
+            <PlatformEvolutionPanel
+              mode={mode}
+              setMode={setMode}
+              active={active}
+              className={`${panelGlass} relative z-10 mt-5 lg:hidden`}
+            />
 
             {/* Decorative elements */}
             <div className="absolute -right-12 -top-12 -z-10 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
@@ -172,4 +219,3 @@ export function HeroFuller() {
     </ScrollReveal>
   );
 }
-

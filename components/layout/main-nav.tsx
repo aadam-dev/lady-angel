@@ -7,6 +7,7 @@ import { Logo } from "./logo";
 import { Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { SITE_GOOGLE_MAPS_URL } from "@/lib/site";
 
 const navItems = [
   { href: "/network", label: "Network" },
@@ -58,10 +59,16 @@ export function MainNav() {
               <Mail size={12} />
               info@ladyangelnetwork.com
             </a>
-            <span className="hidden items-center gap-1.5 text-primary-foreground/90 lg:inline-flex">
-              <MapPin size={12} />
-              East Legon, Accra
-            </span>
+            <a
+              href={SITE_GOOGLE_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-primary-foreground/90 transition-colors hover:text-primary-foreground"
+            >
+              <MapPin size={12} aria-hidden />
+              <span className="lg:hidden">Directions</span>
+              <span className="hidden lg:inline">East Legon, Accra</span>
+            </a>
           </div>
         </div>
       </div>

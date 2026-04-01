@@ -1,5 +1,9 @@
 import Link from "next/link";
 import { Logo } from "./logo";
+import {
+  SITE_GOOGLE_MAPS_URL,
+  SITE_OFFICE_ADDRESS,
+} from "@/lib/site";
 
 export function Footer() {
   return (
@@ -28,10 +32,21 @@ export function Footer() {
                 info@ladyangelnetwork.com
               </a>
               <a
-                href="tel:0208634000"
+                href="tel:+233208634000"
                 className="block text-sm text-foreground/60 transition-colors hover:text-primary"
               >
                 +233 20 863 4000
+              </a>
+              <p className="max-w-xs text-sm leading-relaxed text-foreground/60">
+                {SITE_OFFICE_ADDRESS}
+              </p>
+              <a
+                href={SITE_GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-sm font-medium text-primary underline-offset-4 transition-colors hover:underline"
+              >
+                Get directions (Google Maps)
               </a>
             </div>
           </div>
