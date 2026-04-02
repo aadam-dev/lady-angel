@@ -8,8 +8,12 @@ import {
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-background py-16">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+    <footer className="relative border-t border-border/50 bg-muted/55 py-16">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 z-0 h-24 bg-gradient-to-b from-primary/6 via-primary/2 to-transparent"
+      />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-4 lg:items-start">
           <div className="lg:col-span-2 space-y-8">
             <Link href="/" className="inline-block transition-opacity hover:opacity-80">
