@@ -3,6 +3,7 @@ import { Logo } from "./logo";
 import {
   SITE_GOOGLE_MAPS_URL,
   SITE_OFFICE_ADDRESS,
+  SITE_WORKING_HOURS,
 } from "@/lib/site";
 
 export function Footer() {
@@ -37,9 +38,14 @@ export function Footer() {
               >
                 +233 20 863 4000
               </a>
-              <p className="max-w-xs text-sm leading-relaxed text-foreground/60">
-                {SITE_OFFICE_ADDRESS}
-              </p>
+              <div className="space-y-1">
+                <p className="max-w-xs text-sm leading-relaxed text-foreground/60">
+                  {SITE_OFFICE_ADDRESS}
+                </p>
+                <p className="text-[11px] font-medium text-foreground/40 italic">
+                  {SITE_WORKING_HOURS}
+                </p>
+              </div>
               <a
                 href={SITE_GOOGLE_MAPS_URL}
                 target="_blank"
@@ -86,7 +92,7 @@ export function Footer() {
             <span className="text-[10px] uppercase tracking-[0.2em] text-foreground/30">
               Powered by{" "}
               <a
-                href="mailto:aadamsays@gmail.com?subject=Build%20or%20project%20enquiry%20(via%20LAN%20website)&body=Hi%2C%0A%0AI%20saw%20ProBuild%20on%20the%20Lady%20Angel%20Network%20site%20and%20would%20like%20to%20discuss%20a%20possible%20build%20or%20project.%0A%0A[Describe your project or request here]%0A%0A"
+                href="mailto:aadamsays@gmail.com?subject=Project%20Inquiry%20%7C%20Inspired%20by%20Lady%20Angel%20Network&body=Hi%20ProBuild%20Team%2C%0A%0AI%20visited%20the%20Lady%20Angel%20Network%20platform%20and%20was%20truly%20impressed%20by%20the%20design%20and%20architecture.%20I%20would%20love%20to%20discuss%20a%20potential%20project%20or%20development%20service%20for%20my%20own%20venture.%0A%0AMy%20Interest%3A%20%5BBriefly%20describe%20your%20project%20or%20needs%5D%0A%0ALooking%20forward%20to%20connecting!%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D"
                 className="text-foreground/50 underline-offset-2 hover:text-primary hover:underline"
               >
                 ProBuild

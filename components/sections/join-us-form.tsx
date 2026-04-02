@@ -1,21 +1,34 @@
 "use client";
 
-import { useActionState } from "react";
+import { useState } from "react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  subscribeToNewsletter,
-  type NewsletterState,
-} from "@/app/actions/newsletter";
-
-const initialState: NewsletterState = { success: false };
 
 export function JoinUsForm() {
-  const [state, formAction, isPending] = useActionState(
-    subscribeToNewsletter,
-    initialState,
-  );
+  const [success, setSuccess] = useState(false);
+  const [isPending, setIsPending] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsPending(true);
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+
+    const subject = encodeURIComponent("Newsletter Subscription Request");
+    const body = encodeURIComponent(
+      `Hello Lady Angel Network team,\n\nPlease add me to your newsletter.\n\nName: ${name}\nEmail: ${email}\n\nThank you.`
+    );
+
+    window.location.href = `mailto:info@ladyangelnetwork.com?subject=${subject}&body=${body}`;
+
+    setTimeout(() => {
+      setSuccess(true);
+      setIsPending(false);
+    }, 800);
+  };
 
   return (
     <ScrollReveal
@@ -39,20 +52,20 @@ export function JoinUsForm() {
         </div>
 
         <div className="rounded-3xl border border-border/80 bg-muted/70 p-6 backdrop-blur-xl">
-          {state.success ? (
+          {success ? (
             <div className="space-y-3">
               <p className="text-[11px] uppercase tracking-[0.22em] text-primary/80">
-                You&apos;re subscribed
+                You're subscribed
               </p>
               <h3 className="font-serif text-xl text-foreground">
                 Thank you for joining the Lady Angel Network community.
               </h3>
               <p className="text-sm leading-relaxed text-foreground/70">
-                We will be in touch with updates, insights, and opportunities.
+                We're redirecting you to your email client to complete the subscription.
               </p>
             </div>
           ) : (
-            <form action={formAction} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_auto]">
                 <div className="space-y-2">
                   <label className="text-xs font-medium uppercase tracking-[0.22em] text-foreground/70">
@@ -87,12 +100,8 @@ export function JoinUsForm() {
                   </Button>
                 </div>
               </div>
-              {state.error && (
-                <p className="text-[11px] text-red-400" role="alert">
-                  {state.error}
-                </p>
-              )}
               <p className="text-[11px] text-foreground/40">
+                This will prepare an email in your default email client.
                 We respect your privacy. Unsubscribe at any time.
               </p>
             </form>

@@ -1,6 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const INVITATION_CRITERIA = [
   "Track record or clear intent to deploy personal capital into early-stage ventures.",
@@ -19,6 +22,32 @@ const MEMBER_BENEFITS = [
 ];
 
 export function MembershipSection() {
+  const [success, setSuccess] = useState(false);
+  const [isPending, setIsPending] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsPending(true);
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const ticketSize = formData.get("ticketSize") as string;
+    const linkedin = formData.get("linkedin") as string;
+    const moreInfo = formData.get("moreInfo") as string;
+
+    const subject = encodeURIComponent(`Membership Application - ${name}`);
+    const body = encodeURIComponent(
+      `Hello Lady Angel Network team,\n\nI would like to apply for membership. Here are my details:\n\nName: ${name}\nEmail: ${email}\nLinkedIn Profile: ${linkedin}\nTicket Size: ${ticketSize}\n\nAdditional Information:\n${moreInfo}\n\nThank you.`
+    );
+
+    window.location.href = `mailto:info@ladyangelnetwork.com?subject=${subject}&body=${body}`;
+
+    setTimeout(() => {
+      setSuccess(true);
+      setIsPending(false);
+    }, 800);
+  };
   const scrollToApply = () => {
     const el = document.getElementById("investor-application");
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -101,22 +130,68 @@ export function MembershipSection() {
               profile against our invitation criteria.
             </p>
           </div>
-          <div className="overflow-hidden rounded-3xl border border-border/80 bg-muted/70 p-6 backdrop-blur-xl">
-            <div className="flex flex-col items-center justify-center py-12 text-center">
-              <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full border border-primary/30 bg-primary/10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+          <div className="rounded-3xl border border-border/80 bg-muted/70 p-6 sm:p-8 backdrop-blur-xl">
+            {success ? (
+              <div className="flex flex-col items-center justify-center py-12 text-center space-y-4">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-primary/30 bg-primary/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h3 className="font-serif text-2xl text-foreground">
+                  Application Initiated
+                </h3>
+                <p className="max-w-md text-sm leading-relaxed text-foreground/70">
+                  We're redirecting you to your email client with a pre-filled application. Please review and send it to our team.
+                </p>
               </div>
-              <p className="font-serif text-lg text-foreground">
-                Investor application form coming soon.
-              </p>
-              <p className="mt-2 max-w-sm text-sm text-foreground/60">
-                In the meantime, reach out to{" "}
-                <a href="mailto:info@ladyangelnetwork.com" className="text-primary underline-offset-2 hover:underline">
-                  info@ladyangelnetwork.com
-                </a>{" "}
-                to express your interest.
-              </p>
-            </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <label className="text-xs font-medium uppercase tracking-[0.22em] text-foreground/70">
+                      Full Name *
+                    </label>
+                    <Input name="name" required placeholder="Your name" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-medium uppercase tracking-[0.22em] text-foreground/70">
+                      Email Address *
+                    </label>
+                    <Input name="email" type="email" required placeholder="you@example.com" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-medium uppercase tracking-[0.22em] text-foreground/70">
+                      LinkedIn Profile *
+                    </label>
+                    <Input name="linkedin" required placeholder="https://linkedin.com/in/..." />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-medium uppercase tracking-[0.22em] text-foreground/70">
+                      Expected Ticket Size *
+                    </label>
+                    <Input name="ticketSize" required placeholder="e.g. $10k - $50k" />
+                  </div>
+                  <div className="sm:col-span-2 space-y-2">
+                    <label className="text-xs font-medium uppercase tracking-[0.22em] text-foreground/70">
+                      Why do you want to join? (Optional)
+                    </label>
+                    <textarea 
+                      name="moreInfo" 
+                      className="flex h-24 w-full rounded-2xl border border-border/80 bg-background/50 px-4 py-3 text-sm ring-offset-background placeholder:text-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
+                      placeholder="Tell us briefly about your interest in Lady Angel Network..."
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
+                  <Button type="submit" size="lg" disabled={isPending} className="w-full sm:w-auto rounded-full px-10">
+                    {isPending ? "Preparing..." : "Submit Application"}
+                  </Button>
+                  <p className="text-[11px] text-foreground/40 text-center sm:text-left">
+                    This will securely open your default email client.
+                  </p>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </div>
